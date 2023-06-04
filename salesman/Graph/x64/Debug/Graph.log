@@ -1,0 +1,15 @@
+﻿  main.cpp
+C:\Users\Admin\Desktop\salesman\Graph\main.cpp(124,31): warning C4244: аргумент: преобразование "__int64" в "const int", возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\main.cpp(192,35): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\main.cpp(210,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\main.cpp(266,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\main.cpp(365,93): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\main.cpp(365,31): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\Graph.h(233,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\Graph.h(197,145): message : во время компиляции функции-члена класс шаблон "void graph<std::string>::calcCordEdge(std::vector<sf::RectangleShape,std::allocator<sf::RectangleShape>> &,std::vector<sf::ConvexShape,std::allocator<sf::ConvexShape>> &,const std::vector<sf::CircleShape,std::allocator<sf::CircleShape>> &)"
+C:\Users\Admin\Desktop\salesman\Graph\main.cpp(61,17): message : выполняется компиляция ссылки на экземпляр шаблон функции "void graph<std::string>::calcCordEdge(std::vector<sf::RectangleShape,std::allocator<sf::RectangleShape>> &,std::vector<sf::ConvexShape,std::allocator<sf::ConvexShape>> &,const std::vector<sf::CircleShape,std::allocator<sf::CircleShape>> &)"
+C:\Users\Admin\Desktop\salesman\Graph\main.cpp(10,16): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "graph<std::string>"
+C:\Users\Admin\Desktop\salesman\Graph\Graph.h(234,41): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\Graph.h(264,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Admin\Desktop\salesman\Graph\Graph.h(265,41): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  Graph.vcxproj -> C:\Users\Admin\Desktop\salesman\x64\Debug\Graph.exe
