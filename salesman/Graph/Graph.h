@@ -49,30 +49,6 @@ private:
 };
 
 template<typename T>
-inline std::vector<int> graph<T>::getNeighbours(const int& vert){
-
-	std::list<int> result;
-	for (int j = 0; j < this->data.size(); ++j){
-		if (this->matrix[vert][j] != 0 && this->matrix[vert][j] != INT_MAX){
-			result.push_back(j);
-		}
-	}
-	return std::vector<int>(result.begin(), result.end());
-}
-
-template<typename T>
-inline void graph<T>::SalesmanTravel(const int& start){
-	this->pathh.clear();
-	this->pathWeight = INT_MAX;
-	std::list<int> path;
-	path.clear();
-	path.push_back(start);
-	std::vector<bool> vis(this->data.size(), false);
-	vis[start] = true;
-	this->mainSalesman(start, start, path, vis);
-}
-
-template<typename T>
 inline bool graph<T>::AllVisited(std::vector<bool>& visitedVerts){
 	bool flag = true;
 	for (int i = 0; i < this->data.size(); i++) {
@@ -117,6 +93,30 @@ inline void graph<T>::mainSalesman(const int& start, const int& current, std::li
 }
 
 template<typename T>
+inline std::vector<int> graph<T>::getNeighbours(const int& vert){
+
+	std::list<int> result;
+	for (int j = 0; j < this->data.size(); ++j){
+		if (this->matrix[vert][j] != 0 && this->matrix[vert][j] != INT_MAX){
+			result.push_back(j);
+		}
+	}
+	return std::vector<int>(result.begin(), result.end());
+}
+
+template<typename T>
+inline void graph<T>::SalesmanTravel(const int& start){
+	this->pathh.clear();
+	this->pathWeight = INT_MAX;
+	std::list<int> path;
+	path.clear();
+	path.push_back(start);
+	std::vector<bool> vis(this->data.size(), false);
+	vis[start] = true;
+	this->mainSalesman(start, start, path, vis);
+}
+
+template<typename T>
 inline graph<T>::graph(){
 	matrix.reserve(10);
 	data.reserve(10);
@@ -139,21 +139,6 @@ inline void graph<T>::addVertex(T data){
 }
 
 template<typename T>
-inline void graph<T>::addEdge(T data_v1, T data_v2, int weight){
-	auto it1 = find(this->data.begin(), this->data.end(), data_v1);
-	auto it2 = find(this->data.begin(), this->data.end(), data_v2);
-	if (it1 == this->data.end() || it2 == this->data.end()) return;
-	addEdge(size_t(distance(this->data.begin(), it1)), size_t(distance(this->data.begin(), it2)), weight);
-}
-
-template<typename T>
-void graph<T>::addEdge(size_t v1, size_t v2, int weight){
-	if (v1 == v2) return;
-	this->matrix[v1][v2] = weight;
-	this->matrix[v2][v1] = weight;
-}
-
-template<typename T>
 inline void graph<T>::addDirectEdge(T v_start, T v_finish, int weight){
 	auto it1 = find(this->data.begin(), this->data.end(), v_start);
 	auto it2 = find(this->data.begin(), this->data.end(), v_finish);
@@ -165,17 +150,6 @@ template<typename T>
 inline void graph<T>::addDirectEdge(size_t start, size_t finish, int weight){
 	if (start == finish) return;
 	this->matrix[start][finish] = weight;
-}
-
-template<typename T>
-inline void graph<T>::removeVertex(T data){
-	auto it1 = find(this->data.begin(), this->data.end(), data);
-	if (it1 == this->data.end()) return;
-	this->matrix.erase(matrix.begin() + distance(this->data.begin(), it1));
-	for (int i = 0; i < this->matrix.size(); ++i)
-		this->matrix[i].erase(this->matrix[i].begin() + distance(this->data.begin(), it1));
-	this->data.erase(it1);
-	--this->_size;
 }
 
 template<typename T>
@@ -191,6 +165,21 @@ inline void graph<T>::removeEdge(size_t v1, size_t v2){
 	if (v1 == v2) return;
 	this->matrix[v1][v2] = 0;
 	this->matrix[v2][v1] = 0;
+}
+
+template<typename T>
+inline void graph<T>::addEdge(T data_v1, T data_v2, int weight){
+	auto it1 = find(this->data.begin(), this->data.end(), data_v1);
+	auto it2 = find(this->data.begin(), this->data.end(), data_v2);
+	if (it1 == this->data.end() || it2 == this->data.end()) return;
+	addEdge(size_t(distance(this->data.begin(), it1)), size_t(distance(this->data.begin(), it2)), weight);
+}
+
+template<typename T>
+void graph<T>::addEdge(size_t v1, size_t v2, int weight){
+	if (v1 == v2) return;
+	this->matrix[v1][v2] = weight;
+	this->matrix[v2][v1] = weight;
 }
 
 template<typename T>
@@ -294,6 +283,17 @@ inline void graph<T>::calcCordEdge(vector<sf::RectangleShape>& edges, vector<sf:
 		++row;
 		column = row + 1;
 	}
+}
+
+template<typename T>
+inline void graph<T>::removeVertex(T data){
+	auto it1 = find(this->data.begin(), this->data.end(), data);
+	if (it1 == this->data.end()) return;
+	this->matrix.erase(matrix.begin() + distance(this->data.begin(), it1));
+	for (int i = 0; i < this->matrix.size(); ++i)
+		this->matrix[i].erase(this->matrix[i].begin() + distance(this->data.begin(), it1));
+	this->data.erase(it1);
+	--this->_size;
 }
 
 template<typename T>
